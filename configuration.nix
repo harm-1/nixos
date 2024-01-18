@@ -237,6 +237,13 @@
         viAlias = true;
         vimAlias = true;
       };
+
+      programs.git = {
+        enable = true;
+        userName = "Harm";
+        userEmail = "harmvaneekeren@gmail.com";
+      };
+
     };
   };
 
