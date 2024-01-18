@@ -209,7 +209,8 @@
     home.packages = [
       pkgs.atool
       pkgs.httpie
-      pkgs.cowsay
+      pkgs.rsync
+      pkgs.ripgrep
     ];
 
     programs = {
@@ -221,8 +222,14 @@
           cdr = "cd (echo $DIRENV_DIR | string trim -c '-')";
           gpu = "git push --set-upstream origin (git branch --show-current)";
           rcp = "cd ~/work/repos/chatplatform-dev; direnv export fish | source; zellij --layout layout.kdl";
-          rebuild-switch = "sudo nixos-rebuild -I ~/projects/nixos/configuration.nix switch";
+          rebuild-switch = "sudo nixos-rebuild switch -I ~/projects/nixos/configuration.nix";
         };
+      };
+
+      direnv = {
+        enable = true;
+        enableBashIntegration = true;
+        nix-direnv.enable = true;
       };
 
       neovim = {
