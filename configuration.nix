@@ -207,8 +207,6 @@
     home.stateVersion = "23.11";
 
     home.packages = [
-      pkgs.atool
-      pkgs.httpie
       pkgs.rsync
       pkgs.ripgrep
     ];
@@ -222,7 +220,17 @@
           cdr = "cd (echo $DIRENV_DIR | string trim -c '-')";
           gpu = "git push --set-upstream origin (git branch --show-current)";
           rcp = "cd ~/work/repos/chatplatform-dev; direnv export fish | source; zellij --layout layout.kdl";
-          rebuild-switch = "sudo nixos-rebuild switch -I ~/projects/nixos/configuration.nix";
+          consulto_start = ''
+                   cd ~/projects/chatplatform-dev;
+                   just up "$env"-fe;
+                   zellij --layout layout.kdl;
+                   docker stop $(docker ps -q);
+                   just down
+                '';
+          pw_start = "export env='pw'; consulto_start";
+          pv_start = "export env='pv'; consulto_start";
+          vt_start = "export env='vt'; consulto_start";
+          rebuild-switch = "sudo nixos-rebuild switch -I nixos-config=/home/harm/projects/nixos/configuration.nix";
         };
       };
 
@@ -238,7 +246,7 @@
         vimAlias = true;
       };
 
-      programs.git = {
+      git = {
         enable = true;
         userName = "Harm";
         userEmail = "harmvaneekeren@gmail.com";
