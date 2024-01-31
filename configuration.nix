@@ -201,7 +201,7 @@
   # Let Home Manager install and manage itself.
   # programs.home-manager.enable = true;
 
-  home-manager.users.harm = { pkgs, ... }: {
+  home-manager.users.harm = { pkgs, lib, ... }: {
     # The state version is required and should stay at the version you
     # originally installed.
     home.stateVersion = "23.11";
@@ -253,6 +253,39 @@
       };
 
     };
+
+
+    dconf.settings = {
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
+        enable-hot-corners = false;
+      };
+      "org/gnome/mutter" = {
+        dynamic-workspaces = false;
+      };
+      "org/gnome/desktop/wm/preferences" = {
+        num-workspaces = 4;
+      };
+      "org/gnome/shell/app-switcher" =  {
+        current-workspace-only = true;
+      };
+      "org/gnome/settings-daemon/plugins/power" = {
+        sleep-inactive-ac-type = "nothing";
+      };
+      "org/gnome/desktop/session" = {
+        idle-delay = lib.hm.gvariant.mkUint32 0;
+      };
+      "org/gnome/shell" = {
+	      enabled-extensions = ["wsmatrix@martin.zurowietz.de" "dash-to-dock@micxgx.gmail.com"];
+        disabled-extensions = [];
+      };
+      "org.gnome.shell.extensions.dash-to-dock" = {
+        isolate-workspaces = true;
+      };
+    };
+
+
+
   };
 
 }
