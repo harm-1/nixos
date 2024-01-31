@@ -227,9 +227,9 @@
                    docker stop $(docker ps -q);
                    just down
                 '';
-          pw_start = "export env='pw'; consulto_start";
-          pv_start = "export env='pv'; consulto_start";
-          vt_start = "export env='vt'; consulto_start";
+          spw = "export env='pw'; consulto_start";
+          spv = "export env='pv'; consulto_start";
+          svt = "export env='vt'; consulto_start";
           rebuild-switch = "sudo nixos-rebuild switch -I nixos-config=/home/harm/projects/nixos/configuration.nix";
         };
       };
