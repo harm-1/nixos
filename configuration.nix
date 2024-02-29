@@ -11,6 +11,12 @@
       <home-manager/nixos>
     ];
 
+  nix.nixPath = [
+    "nixos-config=/home/harm/projects/nixos/configuration.nix"
+    "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
+    "/nix/var/nix/profiles/per-user/root/channels"
+  ];
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
