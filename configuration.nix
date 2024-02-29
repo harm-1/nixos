@@ -206,6 +206,8 @@
     # originally installed.
     home.stateVersion = "23.11";
 
+    home.sessionPath = [ "$HOME/.config/emacs/bin" ];
+
     home.packages = [
       pkgs.rsync
       pkgs.ripgrep
