@@ -99,15 +99,6 @@
     pkgs.gnomeExtensions.workspace-matrix
     pkgs.gnomeExtensions.dash-to-dock
     docker-compose
-    (python311.withPackages(ps: with ps; [
-      toml
-      python-lsp-server
-      pyls-isort
-      flake8
-      yapf
-      autoflake
-      tomli
-    ]))
     pkgs.telegram-desktop
     pkgs.zellij
     pkgs.kitty
@@ -126,6 +117,39 @@
     pkgs.fragments
     pkgs.brave
     pkgs.google-chrome
+
+    # LSP & Editor tools
+    #
+    # pkgs.additions.node-packages.prettier
+    # pkgs.additions.node-packages."@prettier/plugin-xml"
+    # pkgs.additions.node-packages."@astrojs/language-server"
+    pkgs.nodePackages.typescript
+    pkgs.nodePackages.typescript-language-server
+    pkgs.nodePackages.vscode-json-languageserver
+    pkgs.nodePackages.dockerfile-language-server-nodejs
+    pkgs.nodePackages.yaml-language-server
+    pkgs.nodePackages.vls
+    pkgs.nodePackages.bash-language-server
+    # JSON layer
+    pkgs.nodePackages.vscode-langservers-extracted
+    # Python
+    (python311.withPackages(ps: with ps; [
+      toml
+      python-lsp-server
+      pyls-isort
+      flake8
+      yapf
+      autoflake
+      tomli
+    ]))
+    # Nix
+    pkgs.rnix-lsp
+    pkgs.alejandra
+    # Other
+    pkgs.sqls
+    # Markdown layer
+    pkgs.pandoc
+
 
     # emacs and doom stuff
     pkgs.emacs
