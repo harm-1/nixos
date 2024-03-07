@@ -108,6 +108,7 @@
     pkgs.telegram-desktop
     pkgs.zellij
     pkgs.kitty
+    pkgs.tree
     poetry
     pkgs.python311Packages.pip
     pkgs.deluge
@@ -255,14 +256,19 @@
           consulto_start = ''
                    cd ~/projects/chatplatform-dev;
                    just up "$env"-fe;
-                   zellij --layout layout.kdl;
+                   zellij --layout "$layout";
                    docker stop $(docker ps -q);
                    just down
                 '';
-          spw = "export env='pw'; consulto_start";
-          spv = "export env='pv'; consulto_start";
-          svt = "export env='vt'; consulto_start";
-          rebuild-switch = "sudo nixos-rebuild switch -I nixos-config=/home/harm/projects/nixos/configuration.nix";
+          spw = "export env='pw' layout='layout.kdl'; consulto_start";
+          spv = "export env='pv' layout='layout.kdl'; consulto_start";
+          svt = "export env='vt' layout='layout.kdl'; consulto_start";
+          sspw = "export env='pw' layout='layout-small.kdl'; consulto_start";
+          sspv = "export env='pv' layout='layout-small.kdl'; consulto_start";
+          ssvt = "export env='vt' layout='layout-small.kdl'; consulto_start";
+          sprod = "cd ~/projects/chatplatform-prod/ && zellij --layout layout.kdl";
+          ssprod = "cd ~/projects/chatplatform-prod/ && zellij --layout layout-small.kdl";
+          rebuild = "sudo nixos-rebuild switch";
         };
       };
 
@@ -303,6 +309,10 @@
       };
       "org/gnome/settings-daemon/plugins/power" = {
         sleep-inactive-ac-type = "nothing";
+      };
+      "org/gnome/desktop/background" = {
+        picture-uri = "file:///home/harm/projects/nixos/wallpaper.jpg";
+        picture-uri-dark = "file:///home/harm/projects/nixos/wallpaper.jpg";
       };
       "org/gnome/desktop/session" = {
         idle-delay = lib.hm.gvariant.mkUint32 0;
