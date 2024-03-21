@@ -100,30 +100,40 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
+    pkgs.gnome.gnome-tweaks
     pkgs.gnomeExtensions.workspace-matrix
     pkgs.gnomeExtensions.dash-to-dock
-    docker-compose
-    pkgs.telegram-desktop
-    pkgs.zellij
-    pkgs.kitty
-    pkgs.tree
-    poetry
-    pkgs.python311Packages.pip
     pkgs.deluge
+    pkgs.fragments
     pkgs.vlc
     pkgs.insomnia
     pkgs.discord
-    pkgs.just
-    pkgs.sbcl
     pkgs.slack
-    pkgs.gnumake
-    pkgs.direnv
     pkgs.whatsapp-for-linux
-    pkgs.fragments
+    pkgs.telegram-desktop
     pkgs.brave
     pkgs.google-chrome
+    pkgs.firefox
+    pkgs.vivaldi
+    # pkgs.asusctl
+    # pkgs.supergfxctl
+
+    # developtment
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
+    docker-compose
+    pkgs.zellij
+    pkgs.kitty
+    pkgs.git
+    pkgs.htop
+    pkgs.beekeeper-studio
+    pkgs.just
+    pkgs.sbcl
+    pkgs.gnumake
+    pkgs.direnv
+    pkgs.tree
+    poetry
+    pkgs.python311Packages.pip
 
     # LSP & Editor tools
     #
@@ -137,6 +147,11 @@
     pkgs.nodePackages.yaml-language-server
     pkgs.nodePackages.vls
     pkgs.nodePackages.bash-language-server
+
+    # web
+    pkgs.jsbeautifier
+    pkgs.html-tidy
+    pkgs.stylelint
     # JSON layer
     pkgs.nodePackages.vscode-langservers-extracted
     # Python
@@ -165,14 +180,6 @@
     pkgs.multimarkdown
     pkgs.shellcheck
     
-    pkgs.firefox
-    pkgs.vivaldi
-    pkgs.git
-    pkgs.htop
-    pkgs.gnome.gnome-tweaks
-    pkgs.beekeeper-studio
-    # pkgs.asusctl
-    # pkgs.supergfxctl
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
